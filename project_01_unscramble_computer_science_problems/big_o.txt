@@ -2,17 +2,17 @@ Task0:
 O(1) Since only 2 lines of code are executed independently of the input size
 
 Task1:
-O(2n) Since for loop execution plus adding the data to set gives 2n
+O(n) Since for loop execution plus adding the data to set gives 3n
 
 Task2:
-O(5n) for loop(n) plus if comparison(n) plus cast to int(n) plus 2 assignments (5)
+O(n) for loop(n) + max plus cast to int(n) plus 2 assignments (4n)
 
 Task3:
-- Part A: O(8n+ nlogn) nlogn from python sorted function + 8 operation made for each data in the list
-- Part B: O(4n) For loop + 2 if conditions and incrementing counter
+- Part A: O( nlogn ) nlogn from python sorted function + 8n operation made for each data in the list
+- Part B: O(n) For loop + 2 if conditions and incrementing counter (4n)
 
 Task4:
-O(10n + nlogn + 2m)
+O( nlogn ) Due to sorted function
 
 Where for every task:
 n = calls size

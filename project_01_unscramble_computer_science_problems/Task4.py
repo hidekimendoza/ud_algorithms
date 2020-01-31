@@ -33,8 +33,8 @@ for call in calls: # n
     callers.add(call[0]) # n
     callees.add(call[1]) # n
 for text in texts: # m
-    text_sender = text[0] # m
-    text_receiver = text[1] # m
+    text_sender.add(text[0]) # m
+    text_receiver.add(text[1]) # m
 
 possible_telemarketers = set()
 for caller in callers: # n

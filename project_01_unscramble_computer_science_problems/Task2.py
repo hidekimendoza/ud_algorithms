@@ -19,11 +19,11 @@ Print a message:
 "<telephone number> spent the longest time, <total time> seconds, on the phone during 
 September 2016.".
 """
-longest_call = { 'caller' : calls[0][0], 'time' : int(calls[0][-1]) }
-for call in calls[1:]:
-    if int(call[-1]) > longest_call['time']:
-        longest_call['caller'] = call[0]
-        longest_call['time'] = int(call[-1])
-print('{} spent the longest time, {} seconds, on the phone during September 2016.'.format(
-    longest_call['caller'], longest_call['time']))
+call_time_spent = dict()
+for call in calls:
+    call_time_spent[call[0]] = call_time_spent.get(call[0],0) + int(call[-1])
+    call_time_spent[call[1]] = call_time_spent.get(call[1],0) + int(call[-1])
+max_time_number = max(call_time_spent, key= lambda k: call_time_spent[k])
 
+print('{} spent the longest time, {} seconds, on the phone during September 2016.'.format(
+    max_time_number, call_time_spent[max_time_number]))

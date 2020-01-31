@@ -69,7 +69,7 @@ for call in calls:
     if '(080)' in call[0] and '(080)' in call[1]:
         bangalore_to_bangalore_counter += 1
 
-percentage = bangalore_to_bangalore_counter/float(len(calls))
+percentage = 100 * bangalore_to_bangalore_counter / float(len(calls))
 
 
 print("{0:.2f} percent of calls from fixed lines in Bangalore are calls "
