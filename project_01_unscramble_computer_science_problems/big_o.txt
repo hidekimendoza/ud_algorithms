@@ -12,8 +12,6 @@ Task3:
 - Part B: O(n) For loop + 2 if conditions and incrementing counter (4n)
 
 Task4:
-O( nlogn ) Due to sorted function
-
-Where for every task:
-n = calls size
-m = texts size
+O(n^2) In the case all callers are telemarketers, a nested loop is required to check if the callers
+elements are in the other ls^2s DuIn the case all callers are telemarketers, a nested loop is required to check if the callers
+elements are in the other lists

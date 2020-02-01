@@ -38,7 +38,7 @@ for text in texts: # m
 
 possible_telemarketers = set()
 for caller in callers: # n
-    if caller not in callees and caller not in text_receiver and caller not in text_sender: # 3n
+    if caller not in callees and caller not in text_receiver and caller not in text_sender: # n
         possible_telemarketers.add(caller) # n
 
 print("These numbers could be telemarketers: ")

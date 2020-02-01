@@ -59,17 +59,17 @@ for call in calls: # n
         else:
             prefix_called_by_bangalore.add('140')
 
-print("The numbers called by people in Bangalore have codes: {}".format(
-    len(prefix_called_by_bangalore)))
 for prefix in sorted(prefix_called_by_bangalore): # n + nlog(n)
     print(prefix) # n
 
+bangalore_counter = 0
 bangalore_to_bangalore_counter = 0
 for call in calls:
-    if '(080)' in call[0] and '(080)' in call[1]:
-        bangalore_to_bangalore_counter += 1
-
-percentage = 100 * bangalore_to_bangalore_counter / float(len(calls))
+    if '(080)' in call[0]:
+        bangalore_counter += 1
+        if '(080)' in call[1]:
+            bangalore_to_bangalore_counter += 1
+percentage =  100 * bangalore_to_bangalore_counter / float(bangalore_counter)
 
 
 print("{0:.2f} percent of calls from fixed lines in Bangalore are calls "
