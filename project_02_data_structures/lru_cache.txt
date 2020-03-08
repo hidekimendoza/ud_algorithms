@@ -1,0 +1,4 @@
+Complexity: As required All operations takes O(1) time.
+
+Used map to enable O(1) search and Double referenced linked list to
+enable set and make cache hits with O(1)

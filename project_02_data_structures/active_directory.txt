@@ -1,0 +1,7 @@
+Time complexity O(n) : Due to need to do the search for every group
+until it finds the user of if it doesn't find it,
+(worst case if user is in the deepest group)
+
+I decided to use recursion here in order to repeat the same search at each
+group/subgroup by using a set, to avoid infinite recursion
+

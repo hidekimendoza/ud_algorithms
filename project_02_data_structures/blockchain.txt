@@ -1,0 +1,6 @@
+Time complexity:
+ - append O(1) Since only need to add one data
+ - lookup O(n) If first added is the one is required
+
+On this project linked list has used, but instead of pointing head to next
+node, the linking between nodes is reversed (pointing to previous node)

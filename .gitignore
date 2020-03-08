@@ -1,0 +1,23 @@
+# IntelliJ IDE
+*/.idea/
+*.iml
+.DS_Store
+
+
+*.xml
+__pycache__/
+*.py[cod]
+.bak
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg

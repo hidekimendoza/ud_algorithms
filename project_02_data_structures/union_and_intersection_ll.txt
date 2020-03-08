@@ -1,0 +1,7 @@
+Time complexity:
+    union -> O(n) -> Need to append each node of the linked list to the
+                     other one
+    intersection -> O(n^2) -> Need to check each element from one list to
+    all the other elements of the other list
+
+Linked lists were required for this project
