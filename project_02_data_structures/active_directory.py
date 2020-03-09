@@ -39,6 +39,10 @@ def is_user_in_group(user, group):
       group(class:Group): group to check user membership against
     """
 
+    if user == "":
+        print('User cannot be empty string')
+        return
+
     def check_user_nested_groups(user_to_verify, group_list):
         if group_list:
             group_under_test = group_list.pop()

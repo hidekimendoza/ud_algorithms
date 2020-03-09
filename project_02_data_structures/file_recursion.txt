@@ -1,3 +1,5 @@
 Time complexity O(n): Due to need to check files under all subdirectories
 
+Space complexity O(1): Data is printed but not stored
+
 Here recursion was applied, and python list used to store the different files

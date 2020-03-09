@@ -1,8 +1,14 @@
 Time complexity:
   - Encoding O(log(n)) -> O(n)[get different characters and counts]
-                          * log(n)[generate codes-binary tree search]
-                          * log(n) PriorityQueue insert
+                          + log(n)[generate codes-binary tree search]
+                          + log(n) PriorityQueue insert
   - Decoding  O(log(n)) -> nlog(n) search each character at the tree
+
+Space complexity:
+  - Encoding O(n)) -> O(n)[get different characters and counts]
+                          + O(n) Generate three
+                          + O(n) Generate codes
+  - Decoding  O(n) -> O(1) Only one output is generated
 
 Use of python PriorityQueue data type to be able to has nodes sorted
 at the queue. Those nodes simulates binary three nodes to give availability

@@ -1,7 +1,14 @@
 Time complexity:
-    union -> O(n) -> Need to append each node of the linked list to the
-                     other one
-    intersection -> O(n^2) -> Need to check each element from one list to
-    all the other elements of the other list
+    union -> O(n) -> Need to iterate over both lists to get the values
+
+    intersection -> O(n) -> Need to iterate over both lists to get the value
+
+Space complexity:
+    union -> O(n) -> Since creation of new linked list is used
+                    + set O(2n)
+
+    intersection -> O(n) -> Since creation of new linked list is used
+                    + 2 sets O(3n), one for intersections and other for
+                    elements of one of the lists
 
 Linked lists were required for this project

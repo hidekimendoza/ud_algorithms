@@ -58,26 +58,42 @@ class LinkedList:
 
 def union(llist_1, llist_2):
     # Your Solution Here
-    new_list = llist_1
+    union_values = set()
+
+    list_1_node = llist_1.head
     list_2_node = llist_2.head
+
+    while list_1_node:
+        union_values.add(list_1_node.value)
+        list_1_node = list_1_node.next
     while list_2_node:
-        new_list.append(list_2_node)
+        union_values.add(list_2_node.value)
         list_2_node = list_2_node.next
-    return new_list
+    union_ll = LinkedList()
+    for value in union_values:
+        union_ll.append(value)
+
+    return union_ll
 
 
 def intersection(llist_1, llist_2):
     # Your Solution Here
-    new_list = LinkedList()
     second_list_head = llist_2.head
+    first_list_head = llist_1.head
+    list_1_elements = set()
+    intersection_values= set()
+    while first_list_head:
+        list_1_elements.add(first_list_head.value)
+        first_list_head = first_list_head.next
     while second_list_head:
-        first_list_head = llist_1.head
-        while first_list_head:
-            if first_list_head.value == second_list_head.value:
-                new_list.append(first_list_head.value)
-                break
-            first_list_head = first_list_head.next
+        if second_list_head.value in list_1_elements:
+            intersection_values.add(second_list_head.value)
         second_list_head = second_list_head.next
+
+
+    new_list = LinkedList()
+    for element in intersection_values:
+        new_list.append(element)
     return new_list
 
 
@@ -97,8 +113,9 @@ class TestLinkedListUnionIntersectionTest(unittest.TestCase):
         for i in element_2:
             linked_list_2.append(i)
 
-        expected_str = '3 -> 2 -> 4 -> 35 -> 6 -> 65 -> 6 -> 4 -> 3 -> 21 -> ' \
-                       '6 -> 32 -> 4 -> 9 -> 6 -> 1 -> 11 -> 21 -> 1 -> '
+        expected_str = '32 -> 65 -> 2 -> 35 -> 3 -> ' \
+                       '4 -> 6 -> 1 -> 9 -> 11 -> 21 -> '
+
         self.assertEqual(union(linked_list_1, linked_list_2).__str__(),
                          expected_str)
         print(intersection(linked_list_1, linked_list_2).__str__())
@@ -116,7 +133,7 @@ class TestLinkedListUnionIntersectionTest(unittest.TestCase):
         for i in element_2:
             linked_list_2.append(i)
 
-        expected_str = '6 -> 4 -> 6 -> 21 -> '
+        expected_str = '4 -> 21 -> 6 -> '
         self.assertEqual(intersection(linked_list_1, linked_list_2).__str__(),
                          expected_str)
 
@@ -132,8 +149,8 @@ class TestLinkedListUnionIntersectionTest(unittest.TestCase):
         for i in element_2:
             linked_list_2.append(i)
 
-        expected_str = '3 -> 2 -> 4 -> 35 -> 6 -> 65 -> 6 -> 4 -> 3' \
-                       ' -> 23 -> 1 -> 7 -> 8 -> 9 -> 11 -> 21 -> 1 -> '
+        expected_str = '65 -> 2 -> 35 -> 3 -> 4 -> 6 -> 1 -> 7 -> 8 -> 9 -> ' \
+                       '11 -> 21 -> 23 -> '
         self.assertEqual(union(linked_list_1, linked_list_2).__str__(),
                          expected_str)
         print(intersection(linked_list_1, linked_list_2).__str__())
@@ -214,13 +231,13 @@ def test_without_intersection():
     element_1 = [3, 2, 4, 35, 6, 65, 6, 4, 3, 23]
     element_2 = [1, 7, 8, 9, 11, 21, 1]
 
-    print('first list: {}'.format(linked_list_1.__str__()))
-    print('second list: {}'.format(linked_list_2.__str__()))
-
     for i in element_1:
         linked_list_1.append(i)
     for i in element_2:
         linked_list_2.append(i)
+
+    print('first list: {}'.format(linked_list_1.__str__()))
+    print('second list: {}'.format(linked_list_2.__str__()))
 
     print('Union: {}'.format(union(linked_list_1,
                                    linked_list_2).__str__()))

@@ -24,11 +24,10 @@ class Block:
         self.previous_hash = previous_hash
         self.hash = self.calc_hash()
 
-    @staticmethod
-    def calc_hash():
+    def calc_hash(self):
         sha = hashlib.sha256()
 
-        hash_str = "We are going to encode this string of data!".encode(
+        hash_str = self.data.encode(
             'utf-8')
 
         sha.update(hash_str)
@@ -38,24 +37,24 @@ class Block:
 
 class Blockchain:
     def __init__(self):
-        self.first_block = None
+        self.tail = None
         self.size = 0
-        self.last_block = None
+        self.head = None
 
     def add(self, data):
-        if not self.first_block:
-            self.first_block = Block(strftime("%Y-%m-%d %H:%M:%S",
-                                              gmtime()),
-                                     data, None)
-            self.last_block = self.first_block
+        if not self.tail:
+            self.tail = Block(strftime("%Y-%m-%d %H:%M:%S",
+                                       gmtime()),
+                              data, None)
+            self.head = self.tail
         else:
             new_block = Block(strftime("%Y-%m-%d %H:%M:%S", gmtime()),
-                              data, self.last_block)
-            self.last_block = new_block
+                              data, self.head)
+            self.head = new_block
         self.size += 1
 
     def __str__(self):
-        last_block = self.last_block
+        last_block = self.head
         string = ''
         while last_block:
             string += 'Block: \n' \

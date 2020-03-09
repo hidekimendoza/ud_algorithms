@@ -70,6 +70,9 @@ def huffman_encoding(data):
         return '', None
     tree, keys = sort_data(data)
 
+    if tree.qsize() == 1:
+        return '0' * len(data), tree.get()
+
     while tree.qsize() > 1:
         node_left = tree.get()
         node_right = tree.get()
@@ -113,6 +116,9 @@ def path_from_root_to_node(root, data):
 
 def huffman_decoding(data, tree):
     decoded_str = ''
+    if len(data):
+        if tree.hier == len(data):
+            return tree.value *len(data)
     while len(data):
         try:
             decoded_char, data = get_decoded_char(data, tree)
@@ -230,7 +236,28 @@ def test_with_invalid_decode():
     print('')
 
 
+def test_with_same_letter_only():
+    input_str = 'aaaaaaaaaaa'
+    print('Encoding, decoding string: \'{}\''.format(input_str))
+    encoded_data, tree = huffman_encoding(input_str)
+    print('Encoded output: \'{}\''.format(encoded_data))
+    decoded_data = huffman_decoding(encoded_data, tree)
+    print('decoded output: \'{}\''.format(decoded_data))
+    print('')
+
+def test_with_other_sentence():
+    input_str = 'another_sentence'
+    print('Encoding, decoding string: \'{}\''.format(input_str))
+    encoded_data, tree = huffman_encoding(input_str)
+    print('Encoded output: \'{}\''.format(encoded_data))
+    decoded_data = huffman_decoding(encoded_data, tree)
+    print('decoded output: \'{}\''.format(decoded_data))
+    print('')
+
+
 if __name__ == '__main__':
     test_empty()
     test_with_string()
     test_with_invalid_decode()
+    test_with_other_sentence()
+    test_with_same_letter_only()
