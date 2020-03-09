@@ -23,12 +23,12 @@ class Block:
         self.data = data
         self.previous_hash = previous_hash
         self.hash = self.calc_hash()
+        self.previous_node = None
 
     def calc_hash(self):
         sha = hashlib.sha256()
 
-        hash_str = self.data.encode(
-            'utf-8')
+        hash_str = (self.timestamp + self.data).encode('utf-8')
 
         sha.update(hash_str)
 
@@ -39,24 +39,24 @@ class Blockchain:
     def __init__(self):
         self.tail = None
         self.size = 0
-        self.head = None
 
     def add(self, data):
-        if not self.tail:
-            self.tail = Block(strftime("%Y-%m-%d %H:%M:%S",
-                                       gmtime()),
+        if self.tail == None:
+            self.tail = Block(strftime("%Y-%m-%d %H:%M:%S", gmtime()),
                               data, None)
-            self.head = self.tail
         else:
             new_block = Block(strftime("%Y-%m-%d %H:%M:%S", gmtime()),
-                              data, self.head)
-            self.head = new_block
+                              data, self.tail.hash)
+            new_block.previous_node = self.tail
+            self.tail = new_block
         self.size += 1
 
     def __str__(self):
-        last_block = self.head
+        if self.tail == None:
+            return 'Empty chain'
         string = ''
-        while last_block:
+        nodes_path = self.get_first_node_list()
+        for last_block in nodes_path:
             string += 'Block: \n' \
                       'block_information: \n' \
                       'timestamp: {}\n' \
@@ -65,8 +65,25 @@ class Blockchain:
                       'hash: {}\n'.format(last_block.timestamp, last_block.data,
                                           last_block.previous_hash,
                                           last_block.hash)
-            last_block = last_block.previous_hash
         return string
+
+    def search(self, data):
+        node = self.tail
+        while node:
+            if node.data == data:
+                return node
+            node = node.previous_node
+        print('Data not found')
+        return None
+
+
+    def get_first_node_list(self):
+        nodes = list()
+        head = self.tail
+        while head:
+            nodes.insert(0, head)
+            head = head.previous_node
+        return nodes
 
 
 def test_empty_block_chain():
@@ -86,11 +103,12 @@ def test_block_chain_one_node():
     print('---')
 
 
-def test_block_chain_two_nodes():
+def test_block_chain_three_nodes():
     chain = Blockchain()
     chain.add('First node')
     chain.add('Second node')
-    print('Blockchain with two nodes:')
+    chain.add('Third node')
+    print('Blockchain with three nodes:')
     print('---')
     print(chain.__str__())
     print('---')
@@ -99,4 +117,4 @@ def test_block_chain_two_nodes():
 if __name__ == '__main__':
     test_empty_block_chain()
     test_block_chain_one_node()
-    test_block_chain_two_nodes()
+    test_block_chain_three_nodes()

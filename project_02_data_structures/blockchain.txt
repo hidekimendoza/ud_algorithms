@@ -2,7 +2,12 @@ Time complexity:
  - append O(1) Since only need to add one data
  - lookup O(n) If first added is the one is required
 
-Space complexity O(n): For each character added to the chain
+Space complexity O(1): For each character added to the chain
+
+ - append O(n) The size of the blockchain is equivalent to the number of blocks
+ added
+ - lookup O(1) No need to create other linked list, just iterate over the
+ current one
 
 On this project linked list has used, but instead of pointing head to next
 node, the linking between nodes is reversed (pointing to previous node)
