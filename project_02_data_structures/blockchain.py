@@ -39,24 +39,18 @@ class Blockchain:
     def __init__(self):
         self.tail = None
         self.size = 0
-        self.head = None
 
     def add(self, data):
-        if not self.tail:
-            self.tail = Block(strftime("%Y-%m-%d %H:%M:%S",
-                                       gmtime()),
-                              data, None)
-            self.head = self.tail
-        else:
-            new_block = Block(strftime("%Y-%m-%d %H:%M:%S", gmtime()),
-                              data, self.head)
-            self.head = new_block
+        self.tail = Block(strftime("%Y-%m-%d %H:%M:%S", gmtime()),
+                          data, self.tail)
         self.size += 1
 
     def __str__(self):
-        last_block = self.head
+        if self.tail == None:
+            return 'Empty chain'
         string = ''
-        while last_block:
+        nodes_path = self.get_first_node_list()
+        for last_block in nodes_path:
             string += 'Block: \n' \
                       'block_information: \n' \
                       'timestamp: {}\n' \
@@ -65,8 +59,25 @@ class Blockchain:
                       'hash: {}\n'.format(last_block.timestamp, last_block.data,
                                           last_block.previous_hash,
                                           last_block.hash)
-            last_block = last_block.previous_hash
         return string
+
+    def search(self, data):
+        node = self.tail
+        while node:
+            if node.data == data:
+                return node
+            node = node.previous_hash
+        print('Data not found')
+        return None
+
+
+    def get_first_node_list(self):
+        nodes = list()
+        head = self.tail
+        while head:
+            nodes.insert(0, head)
+            head = head.previous_hash
+        return nodes
 
 
 def test_empty_block_chain():

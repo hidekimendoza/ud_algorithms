@@ -43,6 +43,9 @@ def is_user_in_group(user, group):
         print('User cannot be empty string')
         return
 
+    if not isinstance(group, Group):
+        print('Group shall be a Group instance')
+        return
     def check_user_nested_groups(user_to_verify, group_list):
         if group_list:
             group_under_test = group_list.pop()
