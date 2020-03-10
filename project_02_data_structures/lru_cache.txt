@@ -1,4 +1,9 @@
-Complexity: As required All operations takes O(1) time.
+Complexity:
+Time - As required All operations takes O(1) time.
+Space - O(n) -> I could consider it O(n) where n is the size of the linked list,
+                + O(1) Variables created at the functions (set and get)
+                are independent of the size
+
 
 Used map to enable O(1) search and Double referenced linked list to
 enable set and make cache hits with O(1)
