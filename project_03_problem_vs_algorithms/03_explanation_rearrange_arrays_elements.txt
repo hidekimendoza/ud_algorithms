@@ -4,4 +4,4 @@ the heap, then with the sorted data, then iterate per element on the list
 to generate the two numbers
 
 Time complexity O(nlog(n)) -> nlog(n) heapsort + n generate numbers
-Space Complexity O(n): Due to heapify action
+Space Complexity O(n): On Stack due to heapify action
