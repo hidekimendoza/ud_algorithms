@@ -130,7 +130,10 @@ class Router:
         # so it should be placed in a function here
         if path.endswith('/'):
             path = path[:-1]
-        return path.split('/')
+        if path[0] != '/':
+            raise ValueError('URL shall start with "/" ')
+        sub_path = path.split('/')
+        return sub_path
 
 
 if __name__ == "__main__":
@@ -155,3 +158,10 @@ if __name__ == "__main__":
     print(router.lookup(
         "/home/about/me"))  # should print 'not found handler' or None if you
     # did not implement one
+
+    try:
+        router.add_handler( 'invalid/path', 'handler')
+    except ValueError as exc:
+        print(exc.__str__())
+
+    print(router.lookup("/home//about"))  # should print 'not found handler'

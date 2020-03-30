@@ -4,6 +4,4 @@ the heap, then with the sorted data, then iterate per element on the list
 to generate the two numbers
 
 Time complexity O(nlog(n)) -> nlog(n) heapsort + n generate numbers
-Space Complexity (1): Since heapsort is an in order sorting algorithm,
-no extra space was necessary after sorting, and after that, only the two
-numbers where created
+Space Complexity O(n): Due to heapify action
