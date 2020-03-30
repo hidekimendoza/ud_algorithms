@@ -1,0 +1,21 @@
+On this case to calculate the square root, I decided to iterate starting from
+zero until i get a number m=n+1 where m^2 > input.
+
+Example table:
+Input    Result    Iterations
+0        0         1
+1        1         2
+2        1         2
+3        1         2
+4        2         3
+5        2         3
+6        2         3
+7        2         3
+8        2         3
+9        3         4
+
+
+Where Time complexity is equal to O(log(n) + 1)  = O(log(n))
+For space complexity, due to the use of a recursive function, stack consumption
+is O(log(n)).
+

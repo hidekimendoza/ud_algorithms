@@ -1,0 +1,8 @@
+On this problem, the approach taken was moving backward '0' and forward '2',
+if we have those elements on their expected positions, then '1's will also
+be on their positions
+
+Space Complexity O(1): Since sorting is executed in place, using a iterative
+approach
+Time Complexity O(n): Avg and best case O(n) ;Worst case O(2n-1) as shown at
+the last example, when '1' need to be moved from, the beginning to the end

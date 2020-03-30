@@ -1,0 +1,12 @@
+In order to solve this problem, the approach was divide and conquer, similar
+to binary search approach by dividing the array in half starting from the
+middle.
+
+In order to select which path take, using the start index and end index on a
+recursive function to evaluate if data is in order or we still have some
+rotated data.
+
+
+Time complexity O(log n) since array is divided by two per iteration
+
+Space complexity Stack O(log n), with one recursive call per iteration

@@ -1,0 +1,8 @@
+To solve this problem with time complexity of O(n), the approach used was
+to iterate once through the whole array starting from first element
+and compare them with two variables containing last found min and max values
+
+
+Time Complexity O(n) - Single traversal lookup
+Space Complexity O(1) Since only two variables are created (min and max) during
+the execution
