@@ -27,7 +27,7 @@ def get_min_max(ints):
         if number > max_value:
             max_value = number
 
-    return min_value, max_value
+    return float(min_value), float(max_value)
 
 
 def test_case_random_0_9():

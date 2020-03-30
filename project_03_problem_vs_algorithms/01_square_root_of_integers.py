@@ -29,6 +29,9 @@ def sqrt(number):
                 return possible_sqrt
         return get_sqrt(numb, possible_sqrt + 1)
 
+    if number < 0:
+        raise ValueError('Invalid input, negative values not accepted ')
+
     return get_sqrt(number, 0)
 
 
@@ -37,3 +40,10 @@ print ("Pass" if (0 == sqrt(0)) else "Fail")
 print ("Pass" if (4 == sqrt(16)) else "Fail")
 print ("Pass" if (1 == sqrt(1)) else "Fail")
 print ("Pass" if (5 == sqrt(27)) else "Fail")
+
+try:
+    result = sqrt(-9)
+except ValueError:
+    print "Pass"
+else:
+    print "Fail"

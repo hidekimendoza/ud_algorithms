@@ -2,9 +2,9 @@ Space complexity O(n), where n is the number of nodes at the tree (stored words)
 This apply for all cases
 
 Time Complexity
-In order to find the prefix, since we are using nested hash tables, we need one
-iteration per character in the word to find O(w) where w is the length of the
-word.
+In order to find the path, since we are using nested hash tables, we need one
+iteration we need to iterate per sub path split by '/' character and the
+time complexity is O(n) where n is the number of sub paths
 
-To look up into the suffixes, the same time complexity O(n) where n are the
-total number of nodes that a certain prefix contains
+To look up into the suffixes, the same time complexity O(n) where n is the
+number of sub paths
